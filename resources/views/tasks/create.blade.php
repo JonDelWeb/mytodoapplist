@@ -33,7 +33,8 @@
                         </x-jet-button>
                     </div>
                 </form>
-                <button><a href="{{ route('tasks.index') }}">Retour à la liste</a></button>
+                <a href="{{ route('tasks.index') }}" class="py-3 px-4 bg-teal-400 text-white hover:bg-teal-500 rounded-lg" role="button">Retour à la liste</a>
+
             </div>
         </div>
     </div>

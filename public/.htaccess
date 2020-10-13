@@ -2,11 +2,11 @@
     # Redirection vers HTTPS
     RewriteCond %{SERVER_PORT} ^80$ [OR]
     RewriteCond %{HTTPS} =off
-    RewriteRule ^(.*)$ https://domaine.tld/$1 [R=301,L]
+    RewriteRule ^(.*)$ https://mytodoapplist.com/$1 [R=301,L]
 
     # Redirection du www vers non-www en HTTPS
     RewriteCond %{HTTP_HOST} ^www\.domaine\.tld [NC]
-    RewriteRule ^(.*)$ https://domaine.tld/$1 [R=301,L]
+    RewriteRule ^(.*)$ https://mytodoapplist.com/$1 [R=301,L]
     
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes

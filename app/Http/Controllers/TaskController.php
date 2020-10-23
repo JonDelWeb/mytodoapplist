@@ -16,8 +16,6 @@ class TaskController extends Controller
     {
         $tasks = $request->user()->tasks;
 
-        //dd($tasks);
-
         return view('tasks.index', compact('tasks'));
     }
 

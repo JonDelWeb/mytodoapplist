@@ -44,18 +44,16 @@ class TaskController extends Controller
      */
     public function store(Request $request, TodoList $list)
     {
-        
         $data = $request->validate([
             'title' => 'required|max:100',
             'detail' => 'required|max:500',
             'toDo' => 'required'
         ]);
 
-        $task = Task::create([
+        $task = $list->tasks()->create([
             'title' => $request->title,
             'detail' => $request->detail,
             'toDoFor' => $request->toDo,
-            'list_id' => intval($request->list_id, 10)
         ]);
         
         return back()->with('message', "La tâche a bien été créée !");

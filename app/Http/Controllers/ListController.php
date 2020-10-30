@@ -64,7 +64,8 @@ class ListController extends Controller
      */
     public function show(TodoList $list)
     {
-        $tasks = Task::where('list_id', $list->id)->get();
+        
+        $tasks = $list->tasks;
         
         return view('tasks.index', compact(['tasks', 'list']));
     }
@@ -98,8 +99,9 @@ class ListController extends Controller
      * @param  \App\Models\TodoList  $todoList
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TodoList $todoList)
+    public function destroy(TodoList $list)
     {
-        //
+        $list->delete();
+        return back();
     }
 }

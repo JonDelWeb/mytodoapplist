@@ -19,11 +19,6 @@ class CreateTasksTable extends Migration
             $table->text('detail')->nullable();
             $table->date('toDoFor')->nullable();
             $table->boolean('state')->default(false);
-            $table->integer('list_id')->unsigned();
-            $table->foreign('list_id')
-                ->references('id')
-                ->on('todo_lists')
-                ->onDelete('cascade');
             $table->timestamp("completed_at")->nullable();
             $table->timestamps();
         });

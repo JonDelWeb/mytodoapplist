@@ -10,12 +10,10 @@
                 <x-jet-validation-errors class="mb-4" />
                 @if (session()->has('message'))
                 <div class="flex items-center bg-green-500 text-white text-sm font-bold px-4 py-3">
-                    {{ session('message') }}
-                    
+                    {{ session('message') }}   
                 </div>
                 @endif
-        
-                <form method="POST" action="{{ route('tasks.store', $list) }}">
+                <form method="POST" action="{{ route('tasks/create/{list}', $list) }}">
                     @csrf
                     <div class="mt-4">
                         <x-jet-label value="Titre" />

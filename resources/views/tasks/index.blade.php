@@ -1,9 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-2xl text-gray-800 leading-tight">
             Liste des tâches
         </h2>
-        <a href="{{ route('tasks.create') }}" role="button" class="bg-teal-400 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded float-right">Créer une tâche</a>
+        <h3 class="font-semibold text-xl text-gray-800 leading-tight pt-4">Vous êtes dans la liste : <strong>{{ $list->title }}</strong></h3>
+        <a href="{{ route('tasks/create/{list}', $list) }}" role="button" class="bg-teal-400 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded float-right">Créer une tâche</a>
         <h4 class="pt-3">Nombre de tâches : {{ count($tasks) }}</h4>
     </x-slot>
     <div class="py-12 h-screen">

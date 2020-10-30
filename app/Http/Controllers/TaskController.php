@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Task;
+use App\Models\{ Task, TodoList };
 
 class TaskController extends Controller
 {
@@ -14,7 +14,13 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        $tasks = $request->user()->tasks;
+        $user = $request->user();
+
+        $lists = $user->todoLists;
+
+        //dd($lists);
+
+        $tasks = Task::where('list_id', $lists[0]->id)->get();
 
         return view('tasks.index', compact('tasks'));
     }
@@ -24,9 +30,10 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(TodoList $list)
     {
-        return view('tasks.create');
+        
+        return view('tasks.create', compact('list'));
     }
 
     /**
@@ -35,20 +42,20 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, TodoList $list)
     {
+        
         $data = $request->validate([
             'title' => 'required|max:100',
             'detail' => 'required|max:500',
             'toDo' => 'required'
         ]);
 
-        $user = $request->user();
-
-        $task = $user->tasks()->create([
+        $task = Task::create([
             'title' => $request->title,
             'detail' => $request->detail,
-            'toDoFor' => $request->toDo
+            'toDoFor' => $request->toDo,
+            'list_id' => intval($request->list_id, 10)
         ]);
         
         return back()->with('message', "La tâche a bien été créée !");
@@ -62,7 +69,8 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        return view('tasks.show', compact('task'));
+        $list = $task->list;
+        return view('tasks.show', compact('task','list'));
     }
 
     /**
@@ -73,7 +81,8 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        return view('tasks.edit', compact('task'));
+        $list = $task->list;
+        return view('tasks.edit', compact('task', 'list'));
     }
 
     /**

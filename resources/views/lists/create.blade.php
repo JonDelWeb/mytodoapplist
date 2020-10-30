@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Création d'une tâche
+            Création d'une liste
         </h2>
     </x-slot>
     <div class="py-12">
@@ -11,35 +11,31 @@
                 @if (session()->has('message'))
                 <div class="flex items-center bg-green-500 text-white text-sm font-bold px-4 py-3">
                     {{ session('message') }}
-                    
                 </div>
                 @endif
-        
-                <form method="POST" action="{{ route('tasks.store', $list) }}">
+                <form method="POST" action="{{ route('lists.store') }}">
                     @csrf
                     <div class="mt-4">
                         <x-jet-label value="Titre" />
                         <x-jet-input class="block mt-1 w-full" type="text" id=title name="title" :value="old('title')" placeholder="Titre de la tâche" required autofocus />
                     </div>
                     <div class="mt-4">
-                        <x-jet-label value="Détail" />
-                        <textarea class="form-input rounded-md shadow-sm mt-1" style="width: 100%" id="detail" name="detail" placeholder="Détail de la tâche">{{ old('detail') }}</textarea>
+                        <x-jet-label value="Description" />
+                        <textarea class="form-input rounded-md shadow-sm mt-1" style="width: 100%" id="detail" name="description" placeholder="Description de la liste">{{ old('description') }}</textarea>
                     </div>
-                    <div class="mt-4">
-                        <x-jet-label value="{{ __('To do for :') }}" />
-                        <x-jet-input class="block mt-1 w-full" type="date" style="width: 100%" id="toDo" name="toDo" />
-                    </div>
-                    <x-jet-input class="block mt-1 w-full" type="hidden" style="width: 100%" id="list_id" name="list_id" value="{{ $list->id}}" />
                     <div class="flex items-center justify-end mt-4">
                         <x-jet-button class="ml-4">
                             Envoyer
                         </x-jet-button>
                     </div>
+
                 </form>
-                <a href="{{ route('lists.show', $list ) }}" class="py-3 px-4 bg-teal-400 text-white hover:bg-teal-500 rounded-lg" role="button">Retour à la liste</a>
+                <a href="{{ route('lists.index') }}" class="py-3 px-4 bg-teal-400 text-white hover:bg-teal-500 rounded-lg" role="button">Retour aux listes</a>
+
 
             </div>
+
         </div>
-    </div>
+
     </div>
 </x-app-layout>

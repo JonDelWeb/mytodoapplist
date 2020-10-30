@@ -6,15 +6,15 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('tasks.index') }}">
-                        <img class="logoNav" src="{{ asset('images/to-do-list-icon-14.jpg') }}" alt="todoListLogo">
+                        <img class="logoNav w-16 h-16" src="{{ asset('images/to-do-list-icon-14.jpg') }}" alt="todoListLogo">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
 
-                    <x-jet-nav-link href="{{ route('tasks.index') }}" :active="request()->routeIs('tasks')">
-                        Mes tâches
+                    <x-jet-nav-link href="{{ route('lists.index') }}" :active="request()->routeIs('lists')">
+                        Mes listes
                     </x-jet-nav-link>
                 </div>
             </div>

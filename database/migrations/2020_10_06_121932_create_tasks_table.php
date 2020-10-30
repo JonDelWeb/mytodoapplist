@@ -15,12 +15,17 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('title')->nullable();
             $table->text('detail')->nullable();
             $table->date('toDoFor')->nullable();
             $table->boolean('state')->default(false);
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->integer('list_id')->unsigned();
+            $table->foreign('list_id')
+                ->references('id')
+                ->on('todo_lists')
+                ->onDelete('cascade');
+            $table->timestamp("completed_at")->nullable();
+            $table->timestamps();
         });
     }
 

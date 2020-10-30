@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-        <a href="{{ route('tasks.index') }}" class="py-3 px-4 bg-teal-400 text-white hover:bg-teal-500 rounded-lg" role="button">Retour à la liste</a>
+        <a href="{{ route('lists.show', $list) }}" class="py-3 px-4 bg-teal-400 text-white hover:bg-teal-500 rounded-lg" role="button">Retour à la liste</a>
 
         </div>
 

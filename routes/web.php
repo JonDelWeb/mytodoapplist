@@ -5,6 +5,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\Auth\FacebookController;
+use App\Http\Controllers\Back\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +25,15 @@ Route::get('page/{page:slug}', [HomeController::class, 'page'])->name('page');
 Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook']);
 Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
 
+Route::get('admin', [AdminController::class, 'index']);
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::resource('lists', ListController::class);
-    
+
     Route::resource('tasks', TaskController::class)->except('create', 'store');
     Route::get('tasks/create/{list}', [TaskController::class, 'create'])->name('tasks/create/{list}');
     Route::post('tasks/create/{list}', [TaskController::class, 'store'])->name('tasks/create/{list}');

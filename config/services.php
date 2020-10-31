@@ -31,7 +31,7 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => '3740891352621639',
+        'client_id' => env('FA_ID'),
         'client_secret' =>env('FA_SECRET'),
         'redirect' => env('FA_REDIRECT'),
 

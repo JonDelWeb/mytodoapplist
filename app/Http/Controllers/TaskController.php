@@ -67,7 +67,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        $list = $task->list;
+        $list = $task->list()->first();
         return view('tasks.show', compact('task','list'));
     }
 

@@ -33,7 +33,7 @@ return [
     'facebook' => [
         'client_id' => '3740891352621639',
         'client_secret' =>env('FA_SECRET'),
-        'redirect' => 'http://localhost:8000/auth/facebook/callback',
+        'redirect' => env('FA_REDIRECT'),
 
     ],
 

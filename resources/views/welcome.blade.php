@@ -4,7 +4,7 @@
             @if (Route::has('login'))
             <div class=" px-6 pb-3 font-bold">
                 @auth
-                <a href="{{ url('/tasks') }}" class="text-lg text-white underline hover:text-teal-500">{{ __('My list') }}</a>
+                <a href="{{ route('lists.index') }}" class="text-lg text-white underline hover:text-teal-500">{{ __('My list') }}</a>
                 @else
                 <a href="{{ route('login') }}" class="text-lg text-white underline hover:text-teal-500">{{ __('Login') }}</a>
 

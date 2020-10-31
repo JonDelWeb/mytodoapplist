@@ -38,6 +38,10 @@
                     {{ __('Register') }}
                 </x-jet-button>
             </div>
+            <div class="flex py-3 px-4 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-bold justify-center mt-5">
+                <x-icon-facebook class="w-5 h-5" />
+                <a class="ml-4" href="{{ url('auth/facebook') }}" id="btn-fblogin">Register with Facebook</a>
+            </div>
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>

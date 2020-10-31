@@ -28,7 +28,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'roles'
+        'roles',
+        'facebook_id'
     ];
 
     /**
@@ -66,8 +67,21 @@ class User extends Authenticatable
         return $this->belongsToMany(TodoList::class);
     }
 
-    public function isOnline() {
-        
+    public function isOnline()
+    {
+
         return Cache::has('user-is-online-' . $this->id);
+    }
+
+    
+    public function addNew($input)
+
+    {
+        $check = static::where('facebook_id', $input['facebook_id'])->first();
+        if (is_null($check)) {
+
+            return static::create($input);
+        }
+        return $check;
     }
 }

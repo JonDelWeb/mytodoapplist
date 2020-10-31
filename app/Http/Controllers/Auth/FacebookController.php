@@ -37,6 +37,7 @@ class FacebookController extends Controller
     {
         try {
             $user = Socialite::driver('facebook')->user();
+
             $finduser = User::where('facebook_id', $user->id)->first();
 
             if ($finduser) {
@@ -57,7 +58,8 @@ class FacebookController extends Controller
             }
         } catch (Exception $e) {
 
-            dd($e->getMessage());
+            //dd($e->getMessage());
+            return redirect('/login')->with('message', 'Désolé, une erreur est survenue, veuillez réessayer plus tard.');
         }
     }
 }

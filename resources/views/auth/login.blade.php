@@ -5,6 +5,11 @@
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
+        @if (session()->has('message'))
+                <div class="flex items-center bg-green-500 text-white text-sm font-bold px-4 py-3">
+                    {{ session('message') }}
+                </div>
+                @endif
 
         @if (session('status'))
         <div class="mb-4 font-medium text-sm text-green-600">

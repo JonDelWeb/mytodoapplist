@@ -24,9 +24,9 @@ Route::get('page/{page:slug}', [HomeController::class, 'page'])->name('page');
 Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook']);
 Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::resource('lists', ListController::class);

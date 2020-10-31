@@ -15,19 +15,15 @@
             </div>
             @endif
         </header>
-
-        <div class="flex flex-col items-center justify-center min-h-screen">
-            <h1 class="text-3xl text-center font-bold py-5 pb-8">{{ __('Welcome on your Todo App List !') }}</h1>
-            <p class="text-2xl text-center py-5">{{ __('Simple and effective') }} !</p>
-            <p class="text-xl text-center py-3">({{ __('It will be improved over time !') }})</p>
-            <div class="">
-                <img src="{{ asset('images/to-do-list-icon-14.jpg') }}" alt="todoList">
+        <div class="flex flex-col items-center min-h-screen">
+            <div class="mt-5">
+                <h1 class="text-3xl">{{ $page->title }}</h1>
             </div>
 
-            <div class="py-8">
-                <a class="bg-teal-300 shadow-md hover:bg-teal-500 px-3 py-2 text-xl rounded-lg" href="{{ url('/tasks') }}">{{ __('Login') }}</a>
+            <div class="bg-white px-5 py-5 rounded-lg">
+                <div>
+                    <p>{{ $page->text }}</p>
+                </div>
             </div>
-
-        </div>
     </x-slot>
 </x-guest-layout>

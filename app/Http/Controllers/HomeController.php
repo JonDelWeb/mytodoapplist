@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\{Page};
+
 use SEO;
 
 class HomeController extends Controller
@@ -17,5 +19,10 @@ class HomeController extends Controller
         SEO::setDescription('Votre Todo App List pour être plus productif au quotidien!');
 
         return view('welcome');
+    }
+
+    public function page(Page $page)
+    {
+        return view('page', compact('page'));
     }
 }

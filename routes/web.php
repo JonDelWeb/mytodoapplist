@@ -19,6 +19,8 @@ use App\Http\Controllers\Auth\FacebookController;
 
 Route::get('/', [HomeController::class, 'index'])->name('welcome');
 
+Route::get('page/{page:slug}', [HomeController::class, 'page'])->name('page');
+
 Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook']);
 Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
 
